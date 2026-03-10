@@ -9,7 +9,7 @@ resource "aws_instance" "web" {
 
   iam_instance_profile = var.instance_profile
 
-  user_data = file("{path.module}../../sripts/user_data.sh")
+  user_data = file("{path.module}../../scripts/user_data.sh")
 
   tags = {
     Name = "terraform-practice-instance"
