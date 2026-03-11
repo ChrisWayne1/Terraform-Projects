@@ -28,7 +28,7 @@ module "autoscaling" {
   ami              = "ami-0c02fb55956c7d316"
   instance_type    = var.instance_type
   private_subnets  = [module.vpc.private_subnet_id]
-  ec2_sg           = module.security_group.sg_id
+  ec2_sg           = module.security_group.ec2_sg_id
   target_group_arn = module.alb.target_group_arn
   instance_profile = module.iam.instance_profile_name
   user_data        = file("${path.module}/scripts/user_data.sh")
