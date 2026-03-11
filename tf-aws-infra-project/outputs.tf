@@ -1,6 +1,6 @@
-output "ec2_public_ip" {
-  description = "Public IP of the EC2 instance"
-  value       = module.ec2.instance_public_ip
+output "alb_dns_name" {
+  description = "DNS name of the Application Load Balancer"
+  value       = module.alb.alb_dns_name
 }
 
 output "vpc_id" {
@@ -8,7 +8,14 @@ output "vpc_id" {
   value       = module.vpc.vpc_id
 }
 
-output "public_subnet_id" {
-  description = "Public subnet ID"
-  value       = module.vpc.public_subnet_id
+output "target_group_arn" {
+  value = module.alb.target_group_arn
+}
+
+output "autoscaling_group_name" {
+  value = module.autoscaling.asg_name
+}
+
+output "application_url" {
+  value = "http://${module.alb.alb_dns_name}"
 }
