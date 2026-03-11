@@ -25,10 +25,10 @@ resource "aws_security_group" "ec2_sg" {
   name   = "ec2-security-group"
   vpc_id = var.vpc_id
   ingress {
-    from_port   = 80
-    to_port     = 80
-    protocol    = "tcp"
-    cidr_blocks = [aws_security_group.alb_sg.id]
+    from_port       = 80
+    to_port         = 80
+    protocol        = "tcp"
+    security_groups = [aws_security_group.alb_sg.id]
   }
 
   egress {
