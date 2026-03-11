@@ -14,15 +14,6 @@ module "iam" {
   source = "./modules/iam"
 }
 
-module "ec2" {
-  source           = "./modules/ec2"
-  instance_type    = var.instance_type
-  subnet_id        = module.vpc.public_subnet_id
-  security_group   = module.security_group.sg_id
-  instance_profile = module.iam.instance_profile_name
-  user_data        = file("${path.module}/scripts/user_data.sh")
-}
-
 module "alb" {
   source = "./modules/alb"
 
